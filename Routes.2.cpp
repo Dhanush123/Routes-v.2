@@ -4,10 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+using namespace std;
 
 #include <cstring>
-
-using namespace std;
 
 class Leg{
   friend class Route;
@@ -97,13 +96,9 @@ Route::Route(const Leg& leg) : dist(leg.getDist()){
 
 Route::Route(const Route& route, const Leg& leg)
         : legs(route.legs), dist(route.dist+leg.dist){
-  try {
+
     if (strcmp(route.legs.back()->endCity, leg.startCity) != 0)
       throw "Mismatch";
-  }
-  catch (string x){
-    cout << x << endl;
-  }
 
   legs.push_back(&leg);
 }
